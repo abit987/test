@@ -1,0 +1,24 @@
+package com.payrollapi.api.service;
+
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+  
+public class DateStringConverter2 extends JsonSerializer<Date> 
+{
+     @Override
+    public void serialize(Date value, JsonGenerator gen, SerializerProvider serializers) throws IOException, JsonProcessingException {
+        if (value != null) {        
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+            String formatted = sdf.format(value);
+             gen.writeString(formatted);
+        }else {
+         }
+    }
+ 
+}
